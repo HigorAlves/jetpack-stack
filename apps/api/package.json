@@ -1,7 +1,7 @@
 {
   "name": "@jetpack/api",
   "version": "0.3.4",
-  "description": "",
+  "description": "NestJS backend",
   "author": "Higor Alves <higorhaalves@gmail.com>",
   "private": true,
   "license": "MIT",
