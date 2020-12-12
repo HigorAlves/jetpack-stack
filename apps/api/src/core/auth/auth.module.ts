@@ -8,8 +8,8 @@ import { AuthRepository } from './auth.repository'
 import { AuthService } from './auth.service'
 import { JwtStrategy } from './strategys/jwt.strategy'
 import { LocalStrategy } from './strategys/local.strategy'
-import { UserModule } from '~/core/user/user.module'
 import { JWT } from '~/constants'
+import { UserModule } from '~/core/user/user.module'
 import { RecoverySchema } from '~/schemas/recovery.schema'
 
 @Module({

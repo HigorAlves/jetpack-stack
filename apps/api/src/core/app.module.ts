@@ -5,10 +5,10 @@ import { MongooseModule } from '@nestjs/mongoose'
 
 import { AppController } from './app.controller'
 import { RolesGuard } from './auth/guards/roles.guard'
-import { AuthModule } from '~/core/auth/auth.module'
-import { UserModule } from '~/core/user/user.module'
 import ENV_CONFIG from '~/config/configuration'
 import { MONGO_DB_CONFIG } from '~/config/mongoose.config'
+import { AuthModule } from '~/core/auth/auth.module'
+import { UserModule } from '~/core/user/user.module'
 
 @Module({
   imports: [

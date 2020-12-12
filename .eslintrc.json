@@ -2,7 +2,13 @@
   "env": {
     "es2021": true,
     "node": true,
-    "jest": true
+    "jest": true,
+    "browser": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   },
   "extends": [
     "plugin:import/errors",
@@ -12,13 +18,20 @@
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
     "prettier/standard",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:react/recommended",
+    "prettier/react"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 12
-	},
-  "plugins": ["@typescript-eslint", "@typescript-eslint/eslint-plugin"],
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "@typescript-eslint/eslint-plugin",
+    "react",
+    "prettier"
+  ],
   "root": true,
   "rules": {
     "prettier/prettier": "error",
@@ -29,10 +42,21 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "space-before-function-paren": "off",
+    "no-use-before-define": "off",
+    "multiline-ternary": "off",
     "import/order": [
       "error",
       {
-        "groups": ["internal", "external", "builtin"],
+        "groups": ["builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",

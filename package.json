@@ -25,7 +25,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
+      "pre-commit": "lerna run lint && lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-push": "yarn test"
     }
@@ -33,9 +33,6 @@
   "lint-staged": {
     "*.{tsx,ts,json}": [
       "pretty-quick --staged"
-    ],
-    "*.{tsx,ts}": [
-      "yarn run lint"
     ]
   },
   "devDependencies": {

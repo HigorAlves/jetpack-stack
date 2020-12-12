@@ -1,6 +1,4 @@
 {
-	"files": [],
-	"references": [
-		{"path": "api"}
-	]
+  "files": [],
+  "references": [{ "path": "api" }, { "path": "ssr" }]
 }

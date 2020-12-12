@@ -1,3 +1,5 @@
+import { join } from 'path'
+
 import { Logger } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { NestExpressApplication } from '@nestjs/platform-express'
@@ -5,8 +7,6 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 import * as Sentry from '@sentry/node'
 import * as rateLimit from 'express-rate-limit'
 import * as helmet from 'helmet'
-
-import { join } from 'path'
 
 import { SENTRY, PORT } from '~/constants'
 import { AppModule } from '~/core/app.module'

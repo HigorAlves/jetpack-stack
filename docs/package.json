@@ -7,7 +7,7 @@
     "dev": "next",
     "start": "next start",
     "build": "next build",
-    "clean": "rimraf .next && rimraf node_modules"
+    "clean": "rimraf .next node_modules"
   },
   "author": "Higor Alves <higorhaalves@gmail.com>",
   "license": "MIT",

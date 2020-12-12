@@ -1,0 +1,13 @@
+{
+  "extends": "../../.eslintrc.json",
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "rules": {
+    "react/prop-types": "off"
+  }
+}
