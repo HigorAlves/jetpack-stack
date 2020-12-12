@@ -1,6 +1,6 @@
 {
   "name": "jetpack-stack",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",
   "repository": "git@github.com:HigorAlves/jetpack-stack.git",
@@ -15,7 +15,13 @@
     "build": "lerna run build --stream --concurrency 2",
     "test": "lerna run test --stream --concurrency 2",
     "lint": "lerna run lint --stream --concurrency 2",
-    "doc:dev": "lerna run dev --stream --scope @jetpack/doc"
+    "doc:dev": "lerna run dev --stream --scope @jetpack/doc",
+    "release": "standard-version",
+    "release:major": "yarn run release --release-as major --no-verify",
+    "release:minor": "yarn run release --release-as minor --no-verify",
+    "release:patch": "yarn run release --release-as patch --no-verify",
+    "release:alpha": "yarn run release --prerelease alpha --no-verify",
+    "release:beta": "yarn run release --prerelease beta --no-verify"
   },
   "husky": {
     "hooks": {
@@ -52,6 +58,7 @@
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "standard-version": "^9.0.0"
   }
 }
