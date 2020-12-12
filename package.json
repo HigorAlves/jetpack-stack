@@ -1,23 +1,48 @@
 {
-	"name": "jetpack-stack",
-	"version": "0.0.1",
-	"main": "index.js",
-	"license": "MIT",
-	"private": true,
-	"workspaces": [
-		"apps/*"
-	],
-	"devDependencies": {
-		"lerna": "^3.22.1",
-		"rimraf": "^3.0.2",
-		"@typescript-eslint/eslint-plugin": "^4.7.0",
+  "name": "jetpack-stack",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "shared/*"
+  ],
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn test"
+    }
+  },
+  "lint-staged": {
+    "*.{tsx,ts,json}": [
+      "pretty-quick --staged"
+    ],
+    "*.{tsx,ts}": [
+      "yarn run lint"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
     "@typescript-eslint/parser": "^4.7.0",
+    "commitlint": "^11.0.0",
     "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-config-standard": "^16.0.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-promise": "^4.2.1"
-	}
+    "eslint-plugin-promise": "^4.2.1",
+    "husky": "^4.3.5",
+    "lerna": "^3.22.1",
+    "lerna-changelog": "^1.0.1",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0",
+    "rimraf": "^3.0.2"
+  }
 }
