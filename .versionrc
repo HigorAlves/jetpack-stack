@@ -1,0 +1,59 @@
+{
+  "types": [
+    {
+      "type": "build",
+      "section": ":rocket: Build System",
+      "hidden": false
+    },
+    {
+      "type": "ci",
+      "section": "CI",
+      "hidden": false
+    },
+    {
+      "type": "chore",
+      "section": ":triangular_flag_on_post: Others",
+      "hidden": false
+    },
+    {
+      "type": "docs",
+      "section": ":memo: Docs",
+      "hidden": false
+    },
+    {
+      "type": "feat",
+      "section": ":sparkles: Features",
+      "hidden": false
+    },
+    {
+      "type": "fix",
+      "section": ":bug: Bug Fixes",
+      "hidden": false
+    },
+    {
+      "type": "perf",
+      "section": ":zap: Performance Improvements",
+      "hidden": false
+    },
+    {
+      "type": "refactor",
+      "section": ":recycle: Code Refactoring",
+      "hidden": false
+    },
+    {
+      "type": "revert",
+      "section": ":fire: Reverts",
+      "hidden": false
+    },
+    {
+      "type": "style",
+      "section": ":art: Styling",
+      "hidden": false
+    },
+    {
+      "type": "test",
+      "section": ":white_check_mark: Tests",
+      "hidden": false
+    }
+  ]
+}
