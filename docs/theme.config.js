@@ -1,11 +1,11 @@
 export default {
   repository: 'https://github.com/higoralves/jetpack-stack',
-  titleSuffix: ' – STACK',
+  titleSuffix: ' - The optimal workflow for full stack teams',
   logo: (
     <>
       <span className='mr-2 font-extrabold hidden md:inline'>JETPACK</span>
       <span className='text-gray-600 font-normal hidden md:inline'>
-        Your next project start
+        The optimal workflow for full stack teams
       </span>
     </>
   ),

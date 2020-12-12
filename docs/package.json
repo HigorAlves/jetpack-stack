@@ -7,7 +7,7 @@
     "dev": "next",
     "start": "next start",
     "build": "next build",
-    "clean": "rimraf .next"
+    "clean": "rimraf .next && rimraf node_modules"
   },
   "author": "Higor Alves <higorhaalves@gmail.com>",
   "license": "MIT",
@@ -15,7 +15,7 @@
     "next": "^10.0.3",
     "nextra": "^0.3.1",
     "nextra-theme-docs": "^1.0.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   }
 }
