@@ -1,0 +1,12 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/docs/structure": "pages/docs/structure.js",
+  "/docs/ssg": "pages/docs/ssg.js",
+  "/docs/anchors": "pages/docs/anchors.js",
+  "/docs/i18n": "pages/docs/i18n.js",
+  "/api/get-started": "pages/api/get-started.js",
+  "/docs/mdx": "pages/docs/mdx.js",
+  "/docs/get-started": "pages/docs/get-started.js"
+}

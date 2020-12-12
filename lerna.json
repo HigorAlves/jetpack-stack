@@ -2,13 +2,13 @@
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": ["apps/*", "packages/*", "shared/*"],
+  "packages": ["apps/*", "packages/*", "shared/*", "docs"],
   "command": {
     "publish": {
       "conventionalCommits": true
     },
     "version": {
-      "conventionalCommits": true
+      "message": "chore: new release version"
     }
   }
 }

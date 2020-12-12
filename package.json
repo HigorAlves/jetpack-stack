@@ -8,14 +8,20 @@
   "workspaces": [
     "apps/*",
     "packages/*",
-    "shared/*"
+    "shared/*",
+    "docs"
   ],
-  "scripts": {},
+  "scripts": {
+    "build": "lerna run build --stream --concurrency 2",
+    "test": "lerna run test --stream --concurrency 2",
+    "lint": "lerna run lint --stream --concurrency 2",
+    "doc:dev": "lerna run dev --stream --scope @jetpack/doc"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-push": "lerna run test"
+      "pre-push": "yarn test"
     }
   },
   "lint-staged": {
