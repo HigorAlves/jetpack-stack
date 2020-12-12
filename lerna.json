@@ -2,5 +2,10 @@
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
+  "command": {
+    "version": {
+      "message": "build(release)!: new release"
+    }
+  },
   "packages": ["apps/*", "packages/*", "shared/*"]
 }
