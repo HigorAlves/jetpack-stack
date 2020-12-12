@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/HigorAlves/jetpack-stack/compare/v0.1.0...v0.1.1) (2020-12-12)
+
+
+### :memo: Docs
+
+* **doc:** nextjs initial documentation ([cdd4666](https://github.com/HigorAlves/jetpack-stack/commit/cdd4666117e9c31d3bb197427d0a49ff949ff51e))
+* lerna version message ([d6f2f29](https://github.com/HigorAlves/jetpack-stack/commit/d6f2f297400251dc29531896540f3952df108626))
+
+
+### :sparkles: Features
+
+* **ssr:** new app for the project ([d86542a](https://github.com/HigorAlves/jetpack-stack/commit/d86542a2c99773130a5e81a43f0ea812b333fb06))
+
+
+### :bug: Bug Fixes
+
+* lint staged for apps ([a6da4e1](https://github.com/HigorAlves/jetpack-stack/commit/a6da4e15186fbc19aa8870bd4281aff18ab501f0))
+* lint staged for apps ([fc744f1](https://github.com/HigorAlves/jetpack-stack/commit/fc744f159909de4cc1d9c2cf54bd3380a438eb34))
+* **api:** extend default tsconfig file ([245b896](https://github.com/HigorAlves/jetpack-stack/commit/245b896565829e17afa9817932308b3992a313bc))
+* **doc:** removed build files ([f26cd8e](https://github.com/HigorAlves/jetpack-stack/commit/f26cd8e6c21f4151151b64654389505b4729edde))
+
+
+### :rocket: Build System
+
+* new release ([3d26326](https://github.com/HigorAlves/jetpack-stack/commit/3d263267e919e575b63b7c81d76b266a508fb1aa))
+* new release version ([b1724d5](https://github.com/HigorAlves/jetpack-stack/commit/b1724d50ab3590475b784f5ef8c715d6176edf4e))
+* new release version ([1a59d4a](https://github.com/HigorAlves/jetpack-stack/commit/1a59d4ae34c032998c4b5808e73ba3fefcdbfcb7))
+
 ## 0.1.0 (2020-12-12)
 
 
