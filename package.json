@@ -9,6 +9,9 @@
     "packages/*",
     "shared/*"
   ],
+  "scripts": {
+    "release": "yarn lerna version --no-verify"
+  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
