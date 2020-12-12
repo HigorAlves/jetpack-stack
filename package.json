@@ -3,20 +3,19 @@
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
+  "repository": "git@github.com:HigorAlves/jetpack-stack.git",
   "private": true,
   "workspaces": [
     "apps/*",
     "packages/*",
     "shared/*"
   ],
-  "scripts": {
-    "release": "yarn lerna version --no-verify"
-  },
+  "scripts": {},
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged",
-      "pre-push": "yarn test"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-push": "lerna run test"
     }
   },
   "lint-staged": {
