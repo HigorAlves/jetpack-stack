@@ -8,7 +8,7 @@
       "conventionalCommits": true
     },
     "version": {
-      "message": "chore: new release version"
+      "message": "build: new release version"
     }
   }
 }
