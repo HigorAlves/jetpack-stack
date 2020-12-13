@@ -13,7 +13,8 @@
     "dev": "sass --watch src:dist",
     "postdev": "rimraf dist",
     "prepublish": "rimraf dist",
-    "publish": "npm publish --access public"
+    "publish": "npm publish --access public",
+    "test": "echo no tests"
   },
   "devDependencies": {
     "sass": "^1.30.0"
