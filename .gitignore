@@ -3,6 +3,7 @@ dist/
 build/
 node_modules/
 /node_modules
+node_modules
 .next
 
 # Logs
@@ -41,7 +42,6 @@ coverage/
 # ENVS
 .env
 
-*.module.scss.d.ts
 *.tsbuildinfo
 *.todo
 
@@ -49,6 +49,10 @@ coverage/
 apps/ssr/functions/**/*.js
 **/*.js.map
 
-# TypeScript v1 declaration files
-typings/
+# style typings
+*.scss.d.ts
+*.module.scss.d.ts
 
+# lighthouse
+.lighthouseci
+lighthouse-report.html

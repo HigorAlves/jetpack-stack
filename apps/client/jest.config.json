@@ -1,0 +1,12 @@
+{
+  "bail": 1,
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx,tsx,ts}",
+    "!**/node_modules/**",
+    "!docs",
+    "!__mocks__"
+  ],
+  "coverageDirectory": "coverage",
+  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+  "testPathIgnorePatterns": ["/node_modules/", "/build/", "__mocks__"]
+}

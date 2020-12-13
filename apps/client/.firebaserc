@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "nata-cra"
+  },
+  "targets": {
+    "nata-cra": {
+      "hosting": {
+        "prod": [
+          "nata-cra"
+        ],
+        "staging": [
+          "staging-nata-cra"
+        ]
+      }
+    }
+  }
+}

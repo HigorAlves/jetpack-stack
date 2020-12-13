@@ -2,3 +2,5 @@ node_modules
 .next
 /*.js
 *.scss.d.ts
+serviceWorker.ts
+.storybook

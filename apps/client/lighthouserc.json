@@ -1,0 +1,19 @@
+{
+  "ci": {
+    "upload": {
+      "target": "temporary-public-storage"
+    },
+    "collect": {
+      "staticDistDir": "./",
+      "url": ["http://localhost:5000"],
+      "startServerCommand": "serve -s build",
+      "startServerReadyPattern": "ready on",
+      "numberOfRuns": 5
+    },
+    "ci": {
+      "assert": {
+        "preset": "lighthouse:recommended"
+      }
+    }
+  }
+}
