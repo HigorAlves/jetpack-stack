@@ -1,0 +1,134 @@
+.container-fluid,
+.container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container-fluid {
+  width: 100vw;
+}
+
+.row {
+  display: flex;
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  flex-direction: row;
+  box-sizing: border-box;
+  column-gap: $gap-column;
+  row-gap: $gap-row;
+
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+
+  &.center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.end {
+    justify-content: flex-end;
+    text-align: end;
+  }
+
+  &.top {
+    align-items: flex-start;
+  }
+
+  &.middle {
+    align-items: center;
+  }
+
+  &.bottom {
+    align-items: flex-end;
+  }
+
+  &.around {
+    justify-content: space-around;
+  }
+
+  &.between {
+    justify-content: space-between;
+  }
+
+  &.evenly {
+    justify-content: space-evenly;
+  }
+}
+
+.col.reverse {
+  flex-direction: column-reverse;
+}
+
+@each $break in $breakpoints {
+  @media (min-width: nth($break, 2)) {
+    .container {
+      max-width: map-get($map: $container, $key: nth($break, 1));
+    }
+
+    .col-#{nth($break, 1)} {
+      box-sizing: border-box;
+      flex: 1 0 auto;
+    }
+
+    // Columns names for each break point
+    @for $i from 1 to ($quantity-of-columns + 1) {
+      .col-#{nth($break, 1)}-#{$i} {
+        flex-basis: ($i/24) * 100%;
+        max-width: ($i/24) * 100%;
+      }
+    }
+
+    // Offset for each column break point
+    @for $i from 1 to ($quantity-of-columns + 1) {
+      .col-#{nth($break, 1)}-offset-#{$i} {
+        margin-left: ($i/24) * 100%;
+      }
+    }
+
+    // Change the order of the rows
+    @for $i from 1 to ($quantity-of-columns + 1) {
+      .#{nth($break, 1)}-order-#{$i} {
+        margin-left: ($i/$quantity-of-columns) * 100%;
+      }
+    }
+
+    .center-#{nth($break, 1)} {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .end-#{nth($break, 1)} {
+      justify-content: flex-end;
+      text-align: end;
+    }
+
+    .top-#{nth($break, 1)} {
+      align-items: flex-start;
+    }
+
+    .middle-#{nth($break, 1)} {
+      align-items: center;
+    }
+
+    .bottom-#{nth($break, 1)} {
+      align-items: flex-end;
+    }
+
+    .around-#{nth($break, 1)} {
+      justify-content: space-around;
+    }
+
+    .between-#{nth($break, 1)} {
+      justify-content: space-between;
+    }
+
+    .first-#{nth($break, 1)} {
+      order: -1;
+    }
+
+    .last-#{nth($break, 1)} {
+      order: 25;
+    }
+  }
+}
