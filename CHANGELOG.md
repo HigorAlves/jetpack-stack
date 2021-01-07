@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/HigorAlves/jetpack-stack/compare/v0.1.1...v0.2.0) (2021-01-07)
+
+
+### :sparkles: Features
+
+* **client:** create new app ([79d6f72](https://github.com/HigorAlves/jetpack-stack/commit/79d6f7212793d121860095fc62787073c9656986))
+* **jupiter-sass:** new sass ui package ([4df6a26](https://github.com/HigorAlves/jetpack-stack/commit/4df6a2652d1856cbf0a252eaa43c835bbb0c85ca))
+* **jupiter-sass:** new sass ui package ([e7c4d11](https://github.com/HigorAlves/jetpack-stack/commit/e7c4d1184671c085b8d687a19b3ee7a372c71507))
+
 ### [0.1.1](https://github.com/HigorAlves/jetpack-stack/compare/v0.1.0...v0.1.1) (2020-12-12)
 
 
