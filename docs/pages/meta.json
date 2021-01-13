@@ -1,8 +1,0 @@
-{
-  "index": "Jetpack",
-  "repo": "Repository",
-  "nestjs": "Api",
-  "client": "Client",
-  "mobile": "Mobile",
-  "ssr": "SSR"
-}

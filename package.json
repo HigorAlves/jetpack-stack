@@ -8,14 +8,12 @@
   "workspaces": [
     "apps/*",
     "packages/*",
-    "shared/*",
-    "docs"
+    "shared/*"
   ],
   "scripts": {
     "build": "lerna run build --stream --concurrency 2",
     "test": "lerna run test --stream --concurrency 2",
     "lint": "lerna run lint --stream --concurrency 2",
-    "doc:dev": "lerna run dev --stream --scope @jetpack/doc",
     "release": "standard-version",
     "release:major": "yarn run release --release-as major --no-verify",
     "release:minor": "yarn run release --release-as minor --no-verify",
