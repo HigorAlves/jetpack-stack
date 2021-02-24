@@ -8,12 +8,12 @@ import { LoggerModule } from '~/interceptors/logger.interceptor'
 import { UserSchema } from '~/schemas/user.schema'
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
-    LoggerModule
-  ],
-  providers: [UserRepository, UserService],
-  controllers: [UserController],
-  exports: [UserService]
+	imports: [
+		MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
+		LoggerModule
+	],
+	providers: [UserRepository, UserService],
+	controllers: [UserController],
+	exports: [UserService]
 })
 export class UserModule {}

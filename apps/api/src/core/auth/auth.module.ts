@@ -14,17 +14,17 @@ import { LoggerModule } from '~/interceptors/logger.interceptor'
 import { RecoverySchema } from '~/schemas/recovery.schema'
 
 @Module({
-  imports: [
-    UserModule,
-    PassportModule,
-    MongooseModule.forFeature([{ name: 'Recovery', schema: RecoverySchema }]),
-    JwtModule.register({
-      secret: JWT.secret,
-      signOptions: { expiresIn: JWT.duration }
-    }),
-    LoggerModule
-  ],
-  providers: [AuthService, LocalStrategy, JwtStrategy, AuthRepository],
-  controllers: [AuthController]
+	imports: [
+		UserModule,
+		PassportModule,
+		MongooseModule.forFeature([{ name: 'Recovery', schema: RecoverySchema }]),
+		JwtModule.register({
+			secret: JWT.secret,
+			signOptions: { expiresIn: JWT.duration }
+		}),
+		LoggerModule
+	],
+	providers: [AuthService, LocalStrategy, JwtStrategy, AuthRepository],
+	controllers: [AuthController]
 })
 export class AuthModule {}

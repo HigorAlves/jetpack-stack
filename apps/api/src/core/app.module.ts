@@ -10,20 +10,20 @@ import { UserModule } from '~/core/user/user.module'
 import { LoggerModule } from '~/interceptors/logger.interceptor'
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      envFilePath: ['.development.env', '.production.env', '.env'],
-      load: [ENV_CONFIG],
-      isGlobal: true
-    }),
-    MongooseModule.forRoot(MONGO_DB_CONFIG.url, {
-      useNewUrlParser: true,
-      useCreateIndex: true
-    }),
-    LoggerModule,
-    AuthModule,
-    UserModule
-  ],
-  controllers: [AppController]
+	imports: [
+		ConfigModule.forRoot({
+			envFilePath: ['.development.env', '.production.env', '.env'],
+			load: [ENV_CONFIG],
+			isGlobal: true
+		}),
+		MongooseModule.forRoot(MONGO_DB_CONFIG.url, {
+			useNewUrlParser: true,
+			useCreateIndex: true
+		}),
+		LoggerModule,
+		AuthModule,
+		UserModule
+	],
+	controllers: [AppController]
 })
 export class AppModule {}

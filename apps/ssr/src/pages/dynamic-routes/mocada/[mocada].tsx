@@ -8,49 +8,49 @@ import { MOCADA } from '~/services/fetch-github/constants'
 import { User } from '~/services/fetch-github/types'
 
 type StaticPaths = {
-  paths: string[]
-  fallback: boolean
+	paths: string[]
+	fallback: boolean
 }
 
 export const getMocadaPaths = (): string[] =>
-  MOCADA.map(name => `/dynamic-routes/mocada/${name}`)
+	MOCADA.map(name => `/dynamic-routes/mocada/${name}`)
 
 export async function getStaticPaths(): Promise<StaticPaths> {
-  const paths = getMocadaPaths()
+	const paths = getMocadaPaths()
 
-  return { paths, fallback: false }
+	return { paths, fallback: false }
 }
 
 type Params = {
-  params: {
-    mocada: string
-  }
+	params: {
+		mocada: string
+	}
 }
 type StaticProps = {
-  props: {
-    nativo: User
-  }
+	props: {
+		nativo: User
+	}
 }
 
 export async function getStaticProps({ params }: Params): Promise<StaticProps> {
-  const nativo = await fetchUser(params.mocada)
+	const nativo = await fetchUser(params.mocada)
 
-  return { props: { nativo } }
+	return { props: { nativo } }
 }
 
 type Props = {
-  nativo: User
+	nativo: User
 }
 
 export default function MocadaPage({ nativo }: Props): JSX.Element {
-  return (
-    <>
-      <Head>
-        <title>Dynamic Route pre rendered | Nata.House NextJs</title>
-      </Head>
-      <main>
-        <WithoutFallback nativo={nativo} />
-      </main>
-    </>
-  )
+	return (
+		<>
+			<Head>
+				<title>Dynamic Route pre rendered | Nata.House NextJs</title>
+			</Head>
+			<main>
+				<WithoutFallback nativo={nativo} />
+			</main>
+		</>
+	)
 }

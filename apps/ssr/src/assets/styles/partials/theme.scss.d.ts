@@ -1,6 +1,6 @@
 export type Styles = {
-  'wf-inactive': string
-  'wf-loading': string
+	'wf-inactive': string
+	'wf-loading': string
 }
 
 export type ClassNames = keyof Styles

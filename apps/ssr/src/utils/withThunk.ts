@@ -5,11 +5,11 @@
   to dispatch
 */
 export default function withThunk(
-  dispatch: React.Dispatch<StoreTypes.ActionTypes>
+	dispatch: React.Dispatch<StoreTypes.ActionTypes>
 ) {
-  return (actionOrThunk: StoreTypes.ActionOrThunk): void => {
-    typeof actionOrThunk === 'function'
-      ? actionOrThunk(dispatch)
-      : dispatch(actionOrThunk)
-  }
+	return (actionOrThunk: StoreTypes.ActionOrThunk): void => {
+		typeof actionOrThunk === 'function'
+			? actionOrThunk(dispatch)
+			: dispatch(actionOrThunk)
+	}
 }

@@ -7,32 +7,32 @@ import { fetchPublicRepositories } from '~/services/fetch-github'
 import { Repository } from '~/services/fetch-github/types'
 
 type StaticProps = {
-  props: {
-    repos: Repository[]
-  }
+	props: {
+		repos: Repository[]
+	}
 }
 
 export async function getStaticProps(): Promise<StaticProps> {
-  const repos = await fetchPublicRepositories()
+	const repos = await fetchPublicRepositories()
 
-  return { props: { repos } }
+	return { props: { repos } }
 }
 
 type Props = {
-  repos: Repository[]
+	repos: Repository[]
 }
 
 export default function StaticGenerationPage({
-  repos = []
+	repos = []
 }: Props): JSX.Element {
-  return (
-    <>
-      <Head>
-        <title>Static Generation | Nata.House NextJs</title>
-      </Head>
-      <main>
-        <StaticGeneration repos={repos} />
-      </main>
-    </>
-  )
+	return (
+		<>
+			<Head>
+				<title>Static Generation | Nata.House NextJs</title>
+			</Head>
+			<main>
+				<StaticGeneration repos={repos} />
+			</main>
+		</>
+	)
 }
