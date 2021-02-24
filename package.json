@@ -13,6 +13,7 @@
 	"scripts": {
 		"dev:api": "lerna run start:dev --scope @jetpack/api --stream",
 		"dev:client": "lerna run start --scope @jetpack/client --stream",
+		"dev:ssr": "lerna run dev --scope @jetpack/ssr --stream",
 		"build": "lerna run build --stream --concurrency 2",
 		"test": "lerna run test --stream --concurrency 2",
 		"lint": "lerna run lint --stream --concurrency 2",

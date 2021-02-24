@@ -1,16 +1,9 @@
-import React from 'react'
+import { combineReducers } from 'redux'
 
-import { PeopleReducer } from './people'
+import { loginReducer } from './authentication/reducer'
 
-export const initialState: StoreTypes.StateType = {
-	people: PeopleReducer.InitialState
-}
+export const rootReducer = combineReducers({
+	login: loginReducer
+})
 
-export const Reducer: React.Reducer<
-	StoreTypes.StateType,
-	StoreTypes.ActionTypes
-> = (state: StoreTypes.StateType, action: StoreTypes.ActionTypes) => {
-	return {
-		people: PeopleReducer.reducer(state.people, action)
-	}
-}
+export type RootState = ReturnType<typeof rootReducer>

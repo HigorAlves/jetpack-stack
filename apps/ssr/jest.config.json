@@ -7,10 +7,21 @@
     "!docs"
   ],
   "coverageDirectory": "coverage",
-  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
-  "testPathIgnorePatterns": ["/node_modules/", "/.next/"],
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx",
+    "json",
+    "node"
+  ],
+  "testPathIgnorePatterns": [
+    "/node_modules/",
+    "/.next/"
+  ],
   "moduleNameMapper": {
-    "\\.(scss)$": "identity-obj-proxy",
-    "~/(.*)": ["<rootDir>/src/$1"]
+    "~/(.*)": [
+      "<rootDir>/src/$1"
+    ]
   }
 }
