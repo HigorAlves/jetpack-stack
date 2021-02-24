@@ -10,6 +10,7 @@ import { JwtStrategy } from './strategys/jwt.strategy'
 import { LocalStrategy } from './strategys/local.strategy'
 import { JWT } from '~/constants'
 import { UserModule } from '~/core/user/user.module'
+import { LoggerModule } from '~/interceptors/logger.interceptor'
 import { RecoverySchema } from '~/schemas/recovery.schema'
 
 @Module({
@@ -20,7 +21,8 @@ import { RecoverySchema } from '~/schemas/recovery.schema'
     JwtModule.register({
       secret: JWT.secret,
       signOptions: { expiresIn: JWT.duration }
-    })
+    }),
+    LoggerModule
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy, AuthRepository],
   controllers: [AuthController]

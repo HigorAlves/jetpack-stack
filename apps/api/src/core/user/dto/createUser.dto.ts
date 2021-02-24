@@ -1,54 +1,41 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsBoolean, IsNotEmpty, IsString } from 'class-validator'
+import { IsNotEmpty, IsString } from 'class-validator'
 
-import { IUser } from '~/types/user'
-
-/*
-  Please, use DTO only for incoming payload from controller, and make sure it have been correctly validated
-  For other interfaces use ./src/interfaces/yourapp.interface.ts
-*/
+import { ErrorMessages } from '~/constants/dtoMessages'
+import { IUser } from '~/interfaces/user'
 
 export class CreateUserDto implements IUser {
   @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
+  @IsNotEmpty({ message: ErrorMessages.isEmpty })
+  @IsString({ message: ErrorMessages.isString })
   email: string
 
   @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
+  @IsNotEmpty({ message: ErrorMessages.isEmpty })
+  @IsString({ message: ErrorMessages.isString })
   password: string
 
   @ApiProperty()
-  @IsNotEmpty()
-  birthday: { day: number; month: number; year: number }
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
+  @IsNotEmpty({ message: ErrorMessages.isEmpty })
+  @IsString({ message: ErrorMessages.isString })
   firstName: string
 
   @ApiProperty()
-  @IsNotEmpty()
-  @IsBoolean()
-  gender: boolean
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  image: string
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
+  @IsNotEmpty({ message: ErrorMessages.isEmpty })
+  @IsString({ message: ErrorMessages.isString })
   lastName: string
 
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: ErrorMessages.isEmpty })
+  @IsString({ message: ErrorMessages.isString })
+  image: string
+
+  @ApiProperty()
+  @IsNotEmpty({ message: ErrorMessages.isEmpty })
   locale: { currency: 'BRL' | 'USD'; language: 'Portuguese' | 'English' }
 
   @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
+  @IsNotEmpty({ message: ErrorMessages.isEmpty })
+  @IsString({ message: ErrorMessages.isString })
   role: 'client' | 'admin'
 }

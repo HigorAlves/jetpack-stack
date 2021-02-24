@@ -1,24 +1,19 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { IsNotEmpty, IsString } from 'class-validator'
 
-/*
-  Please, use DTO only for incoming payload from controller, and make sure it have been correctly validated
-  For other interfaces use ./src/interfaces/yourapp.interface.ts
-*/
-
 export class NewPasswordDTO {
   @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
+  @IsNotEmpty({ message: 'This field cannot be empty' })
+  @IsString({ message: 'This field must be a string' })
   email: string
 
   @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
+  @IsNotEmpty({ message: 'This field cannot be empty' })
+  @IsString({ message: 'This field must be a string' })
   password: string
 
   @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
+  @IsNotEmpty({ message: 'This field cannot be empty' })
+  @IsString({ message: 'This field must be a string' })
   code: string
 }

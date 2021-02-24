@@ -3,41 +3,43 @@ import { JwtService } from '@nestjs/jwt'
 import * as bcrypt from 'bcrypt'
 
 import { AuthRepository } from './auth.repository'
-import { CreateUserDto } from '~/core/user/dto/createUser.dto'
 import { UserService } from '~/core/user/user.service'
+import { MyLogger } from '~/interceptors/logger.interceptor'
+import {
+  ILogin,
+  INewPassword,
+  IUpdatePassword
+} from '~/interfaces/authentication'
+import { IUser } from '~/interfaces/user'
 import { EmailTemplates, sendMail } from '~/lib/mail'
-import { UserDocument } from '~/schemas/user.schema'
-import { ResponseType } from '~/types/response'
 
 @Injectable()
 export class AuthService {
   constructor(
     private repository: AuthRepository,
     private usersService: UserService,
-    private jwtService: JwtService
-  ) {}
+    private jwtService: JwtService,
+    private logger: MyLogger
+  ) {
+    this.logger.setContext('Authentication')
+  }
 
-  async validateUser(
-    email: string,
-    plainPassword: string
-  ): Promise<{ success: boolean; data?: UserDocument }> {
-    const user = await this.usersService.getByEmail(email)
+  async checkUserPassword(user: ILogin): Promise<boolean> {
+    const { data } = await this.usersService.getByEmail(user.email)
 
     if (user) {
       try {
-        const isPasswordEqual = bcrypt.compareSync(plainPassword, user.password)
-        if (isPasswordEqual) {
-          return { success: true, data: user }
-        }
+        return bcrypt.compareSync(user.password, data.password)
       } catch (error) {
-        return { success: false }
+        this.logger.error(error)
+        return false
       }
     }
 
-    return { success: false }
+    return false
   }
 
-  async checkUseExists(email: string): Promise<boolean> {
+  async checkUserExists(email: string): Promise<boolean> {
     const user = await this.usersService.getByEmail(email)
 
     if (user) {
@@ -47,140 +49,155 @@ export class AuthService {
     return false
   }
 
-  async login(data: {
-    email: string
-    password: string
-  }): Promise<ResponseType> {
-    const result = await this.validateUser(data.email, data.password)
+  async login(login: ILogin): Promise<IResponse> {
+    const isValid = await this.checkUserPassword(login)
 
-    if (result.success) {
-      const payload = { email: result.data.email, roles: [result.data.role] }
+    if (isValid) {
+      const { data } = await this.usersService.getByEmail(login.email)
+      const payload = { email: data.email, roles: [data.role] }
+
+      this.logger.log('New user loggin', { user: data.email })
       return {
-        token: this.jwtService.sign(payload),
-        message: 'Successfully logged in',
+        message: 'Successfuly loged in',
         status: 200,
-        error: false
-      }
-    } else {
-      return {
-        message: 'Email or password wrong.',
-        status: 403,
+        token: this.jwtService.sign(payload),
         error: false
       }
     }
 
-    return { message: 'Invalid password or email', error: true, status: 401 }
+    this.logger.log('User typed wrong password or email')
+    return {
+      message: 'Email or password wrong.',
+      status: 403,
+      error: true
+    }
   }
 
-  async register(userDTO: CreateUserDto): Promise<ResponseType> {
-    const user = await this.usersService.getByEmail(userDTO.email)
+  async register(data: IUser): Promise<IResponse> {
+    const userExists = await this.checkUserExists(data.email)
 
-    if (!user) {
-      const result = await this.usersService.create(userDTO)
+    if (!userExists) {
+      await this.usersService.create(data)
       await sendMail({
         from: 'higorhaalves@gmail.com',
-        to: userDTO.email,
+        to: data.email,
         subject: 'Bem vindo a nossa plataforma',
         dynamic_template_data: {
-          name: `${userDTO.firstName} ${userDTO.lastName}`
+          name: `${data.firstName} ${data.lastName}`
         },
         templateId: EmailTemplates.WELCOME
       })
 
-      return result
+      this.logger.log('A new user inside our DB 🎉🎉')
+
+      return {
+        error: false,
+        message: 'User has been created',
+        status: 201
+      }
     }
 
+    this.logger.log('Something went wrong and we cannot create the user', {
+      user: data.email
+    })
     return {
-      status: 400,
-      message: 'This user already exists!',
-      error: false
+      status: 409,
+      message: 'This user cannot be created.',
+      error: true
     }
   }
 
-  async recoveryPassword(email: string): Promise<ResponseType> {
+  async recoveryPassword(email: string): Promise<IResponse> {
     const alreadyHaveActiveCode = await this.repository.alreadyGenerated(email)
 
     if (!alreadyHaveActiveCode) {
       await this.repository.createRecoveryCode(email)
+
+      this.logger.warn('User created a recovery password code', { user: email })
       return {
         error: false,
         message: 'Recovery code created successfully.',
-        status: 200
-      }
-    } else {
-      return {
-        status: 418,
-        error: false,
-        message: 'There is already a code generated for this email.'
+        status: 201
       }
     }
-  }
 
-  async newPassword({ email, password, code }): Promise<ResponseType> {
-    const user = await this.usersService.getByEmail(email)
-    const isCodeValid = await this.repository.verifyRecoverToken(code)
-    const responseData = {
-      status: 400,
+    this.logger.warn('There is alredy a code for this email', { user: email })
+    return {
+      status: 409,
       error: true,
-      message: 'Was not possible change this password'
+      message: 'There is already a code generated for this email.'
     }
+  }
 
-    if (!user) {
-      responseData.message = 'This user is not listed'
-      return responseData
-    }
-    if (!isCodeValid) {
-      responseData.message = 'This code is no more valid'
-      return responseData
-    }
+  async newPassword(data: INewPassword): Promise<IResponse> {
+    const user = await this.checkUserExists(data.email)
+    const isCodeValid = await this.repository.verifyRecoverToken(data.code)
 
-    const result = await this.usersService.updatePassword(email, password)
-
-    if (result.password) {
-      this.repository.deleteRecoverToken(code)
-
+    if (!user && !isCodeValid) {
+      this.logger.error('Can`t set new password for user.', {
+        user: data.email
+      })
       return {
-        status: 200,
-        error: false,
-        message: 'Password updated'
+        error: true,
+        message: 'Your code our email is not right',
+        status: 406
       }
     }
 
-    return responseData
+    const { password } = await this.usersService.updatePassword(
+      data.email,
+      data.password
+    )
+
+    if (password) {
+      this.repository.deleteRecoverToken(data.code)
+
+      this.logger.log('User has updated the password', { user: data.email })
+      return {
+        status: 204,
+        error: false,
+        message: 'Your password has been changed'
+      }
+    }
   }
 
-  async updatePassword({
-    email,
-    oldPassword,
-    newPassword
-  }): Promise<ResponseType> {
-    const user = await this.usersService.getByEmail(email)
+  async updatePassword(user: IUpdatePassword): Promise<IResponse> {
+    try {
+      const { data } = await this.usersService.getByEmail(user.email)
+      const isPasswordEqual = bcrypt.compareSync(
+        user.oldPassword,
+        data.password
+      )
 
-    if (user) {
-      try {
-        const isPasswordEqual = bcrypt.compareSync(oldPassword, user.password)
+      if (isPasswordEqual) {
+        const password = await bcrypt.hashSync(user.newPassword, 10)
+        const hasChange = await this.usersService.updatePassword(
+          data.email,
+          password
+        )
 
-        if (isPasswordEqual) {
-          const password = await bcrypt.hashSync(newPassword, 10)
-          const result = await this.usersService.updatePassword(email, password)
-
-          if (result) {
-            return {
-              status: 200,
-              error: false,
-              message: 'Password updated'
-            }
-          } else {
-            return {
-              status: 400,
-              error: true,
-              message: 'Password was not updated'
-            }
+        if (hasChange) {
+          this.logger.log('Password has been updated', { user: data.email })
+          return {
+            status: 204,
+            error: false,
+            message: 'Your password has been updated'
           }
         }
-      } catch (error) {
-        return { error: error, message: 'Something goes wrong', status: 500 }
+
+        this.logger.warn('Password has not been updated', { user: data.email })
+        return {
+          status: 409,
+          error: true,
+          message: 'We cant update this password'
+        }
       }
+    } catch (error) {
+      this.logger.error(
+        'Something goes wrong while someone tries to update password',
+        { error }
+      )
+      return { error: error, message: 'Something goes wrong', status: 500 }
     }
   }
 }

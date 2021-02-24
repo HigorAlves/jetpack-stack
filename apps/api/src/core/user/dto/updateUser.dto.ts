@@ -1,42 +1,30 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { IsBoolean, IsNotEmpty, IsString } from 'class-validator'
 
-/*
-  Please, use DTO only for incoming payload from controller, and make sure it have been correctly validated
-  For other interfaces use ./src/interfaces/yourapp.interface.ts
-*/
+import { ErrorMessages } from '~/constants/dtoMessages'
 
 export class UpdateUserDto {
   @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
+  @IsNotEmpty({ message: ErrorMessages.isEmpty })
+  @IsString({ message: ErrorMessages.isString })
   email: string
 
   @ApiProperty()
-  @IsNotEmpty()
-  birthday: { day: number; month: number; year: number }
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
+  @IsNotEmpty({ message: ErrorMessages.isEmpty })
+  @IsString({ message: ErrorMessages.isString })
   firstName: string
 
   @ApiProperty()
-  @IsNotEmpty()
-  @IsBoolean()
-  gender: boolean
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
+  @IsNotEmpty({ message: ErrorMessages.isEmpty })
+  @IsString({ message: ErrorMessages.isString })
   image: string
 
   @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
+  @IsNotEmpty({ message: ErrorMessages.isEmpty })
+  @IsString({ message: ErrorMessages.isString })
   lastName: string
 
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: ErrorMessages.isEmpty })
   locale: { currency: 'BRL' | 'USD'; language: 'Portuguese' | 'English' }
 }

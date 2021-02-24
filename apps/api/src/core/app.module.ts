@@ -1,14 +1,13 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
-import { APP_GUARD } from '@nestjs/core'
 import { MongooseModule } from '@nestjs/mongoose'
 
 import { AppController } from './app.controller'
-import { RolesGuard } from './auth/guards/roles.guard'
 import ENV_CONFIG from '~/config/configuration'
 import { MONGO_DB_CONFIG } from '~/config/mongoose.config'
 import { AuthModule } from '~/core/auth/auth.module'
 import { UserModule } from '~/core/user/user.module'
+import { LoggerModule } from '~/interceptors/logger.interceptor'
 
 @Module({
   imports: [
@@ -21,6 +20,7 @@ import { UserModule } from '~/core/user/user.module'
       useNewUrlParser: true,
       useCreateIndex: true
     }),
+    LoggerModule,
     AuthModule,
     UserModule
   ],

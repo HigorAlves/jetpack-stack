@@ -1,6 +1,7 @@
-export type ResponseType<T = void> = {
+declare interface IResponse<T = void> {
   status: number
-  error: string | boolean
+  error: boolean
   message: string
   token?: string
+  data?: T
 }

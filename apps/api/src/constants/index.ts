@@ -22,3 +22,11 @@ export const STRIPE_API = process.env.STRIPE_API_KEY
 export const COINBASE_API = process.env.COINBASE_API_KEY
 
 export const API_VERSION = process.env.npm_package_version
+
+export const LOG_DNA = {
+  key: process.env.LOGDNA_KEY,
+  hostname: process.env.LOGDNA_HOSTNAME,
+  app: process.env.LOGDNA_APP,
+  env: process.env.LOGDNA_ENV,
+  handleExceptions: true
+}
