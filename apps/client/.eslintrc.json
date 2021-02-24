@@ -1,27 +1,20 @@
 {
-  "extends": "../../.eslintrc.json",
-  "parserOptions": {
-    "project": "tsconfig.json",
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "sourceType": "module"
-  },
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "paths": ["src"]
-      }
-    }
-  },
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "sourceType": "module"
-  },
-  "rules": {
-    "react/prop-types": "off",
-    "default-param-last": "off"
-  }
+	"extends": "../../.eslintrc.json",
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"paths": ["src"]
+			}
+		}
+	},
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"sourceType": "module"
+	},
+	"rules": {
+		"react/prop-types": "off",
+		"default-param-last": "off"
+	}
 }

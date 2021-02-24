@@ -1,17 +1,23 @@
 import React from 'react'
 
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import * as Sentry from '@sentry/react'
+import { Switch, Route, BrowserRouter } from 'react-router-dom'
 
 import { HomePage } from 'pages'
 
-export default function Router(): JSX.Element {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route path='/'>
-          <HomePage />
-        </Route>
-      </Switch>
-    </BrowserRouter>
-  )
+const SentryRoute = Sentry.withSentryRouting(Route)
+
+export default function Routes(): JSX.Element {
+	return (
+		<BrowserRouter>
+			<Switch>
+				<SentryRoute path='/ts'>
+					<h1>S</h1>
+				</SentryRoute>
+				<SentryRoute path='/'>
+					<HomePage />
+				</SentryRoute>
+			</Switch>
+		</BrowserRouter>
+	)
 }

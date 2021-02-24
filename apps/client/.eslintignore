@@ -1,0 +1,7 @@
+node_modules
+.next
+/*.js
+*.scss.d.ts
+/docs
+src/serviceWorker.ts
+.storybook
