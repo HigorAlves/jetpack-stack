@@ -9,7 +9,7 @@ class Sitemap extends React.Component {
 		// const staticPages = await getStaticPages()
 		// const mocada = getMocadaPaths()
 
-		const pages = []
+		// const pages = []
 
 		res.setHeader('Content-Type', 'text/xml')
 		// res.write(createSitemap(pages))

@@ -4,13 +4,15 @@ type Props = {
 	schema: string
 }
 
-const JsonLd: React.FC<Props> = ({ schema }) => (
-	<script
-		type='application/ld+json'
-		dangerouslySetInnerHTML={{
-			__html: JSON.stringify(schema)
-		}}
-	/>
-)
+function JsonLd({ schema }: Props): JSX.Element {
+	return (
+		<script
+			type='application/ld+json'
+			dangerouslySetInnerHTML={{
+				__html: JSON.stringify(schema)
+			}}
+		/>
+	)
+}
 
 export default JsonLd

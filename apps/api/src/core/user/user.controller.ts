@@ -8,7 +8,6 @@ import {
 	Res,
 	Put,
 	UseGuards,
-	Request,
 	UseInterceptors
 } from '@nestjs/common'
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger'
@@ -19,7 +18,6 @@ import { UserService } from '~/core/user/user.service'
 import { Roles } from '~/decorators/roles.decorator'
 import { JwtAuthGuard, RolesGuard } from '~/guards'
 import { SentryInterceptor } from '~/interceptors/sentry.interceptor'
-import { jwtPayload } from '~/types/jwtPayload'
 import { Role } from '~/types/role.enum'
 
 @ApiTags('User')

@@ -1,8 +1,6 @@
-import { Injectable, Logger } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import * as bcrypt from 'bcrypt'
 
-import { CreateUserDto } from '~/core/user/dto/createUser.dto'
-import { UpdateUserDto } from '~/core/user/dto/updateUser.dto'
 import { UserRepository } from '~/core/user/user.repository'
 import { MyLogger } from '~/interceptors/logger.interceptor'
 import { IUser } from '~/interfaces/user'
