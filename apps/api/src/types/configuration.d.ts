@@ -1,5 +1,5 @@
 export type CONFIG_VARS = {
-	database: {
+	mongo: {
 		url: string
 	}
 	jwt: {
@@ -8,5 +8,23 @@ export type CONFIG_VARS = {
 	}
 	sentry: {
 		dsn: string
+	}
+	port: number
+	sendgrid: {
+		apiKey: string
+	}
+	stripe: {
+		apiKey: string
+	}
+	coinbase: {
+		apiKey: string
+	}
+	apiVersion: string
+	logDna: {
+		key: string
+		hostname: string
+		app: string
+		env: string
+		handleExceptions: boolean
 	}
 }
