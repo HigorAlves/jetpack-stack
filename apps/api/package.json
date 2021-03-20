@@ -16,6 +16,7 @@
 		"prettier": "npx prettier --write src/**/*.{ts,tsx,json}",
 		"lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
 		"test": "jest -o --silent",
+		"test:ci": "jest -u --ci --silent --verbose --passWithNoTests",
 		"test:watch": "jest --watch",
 		"test:cov": "jest --coverage",
 		"test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
