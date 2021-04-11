@@ -17,13 +17,13 @@ export class AuthRepository {
 		return await this.RecoveryModel.findOne({ email }).exec()
 	}
 
-	async createRecoveryCode(email: string): Promise<boolean> {
+	async createRecoveryCode(email: string): Promise<boolean | string> {
 		const code: string = uuid()
 		const recovery = new this.RecoveryModel({ email, code })
 
 		try {
-			recovery.save()
-			return true
+			await recovery.save()
+			return code
 		} catch (e) {
 			this.logger.error('ERROR: ', e)
 			return false

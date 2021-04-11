@@ -27,7 +27,7 @@ export class AuthService {
 	async checkUserPassword(user: ILogin): Promise<boolean> {
 		const { data } = await this.usersService.getByEmail(user.email)
 
-		if (user) {
+		if (data) {
 			try {
 				return bcrypt.compareSync(user.password, data.password)
 			} catch (error) {
@@ -40,13 +40,8 @@ export class AuthService {
 	}
 
 	async checkUserExists(email: string): Promise<boolean> {
-		const user = await this.usersService.getByEmail(email)
-
-		if (user) {
-			return true
-		}
-
-		return false
+		const result = await this.usersService.getByEmail(email)
+		return !!result.data
 	}
 
 	async login(login: ILogin): Promise<IResponse> {
@@ -58,7 +53,7 @@ export class AuthService {
 
 			this.logger.log('New user loggin', { user: data.email })
 			return {
-				message: 'Successfuly loged in',
+				message: 'Successfuly logged in',
 				status: 200,
 				token: this.jwtService.sign(payload),
 				error: false
@@ -78,15 +73,19 @@ export class AuthService {
 
 		if (!userExists) {
 			await this.usersService.create(data)
-			await sendMail({
-				from: 'higorhaalves@gmail.com',
-				to: data.email,
-				subject: 'Bem vindo a nossa plataforma',
-				dynamic_template_data: {
-					name: `${data.firstName} ${data.lastName}`
-				},
-				templateId: EmailTemplates.WELCOME
-			})
+			try {
+				await sendMail({
+					from: 'higorhaalves@gmail.com',
+					to: data.email,
+					subject: 'Bem vindo a nossa plataforma',
+					dynamic_template_data: {
+						name: `${data.firstName} ${data.lastName}`
+					},
+					templateId: EmailTemplates.WELCOME
+				})
+			} catch (e) {
+				this.logger.log(`Cannot send welcome email for ${data.email}`)
+			}
 
 			this.logger.log('A new user inside our DB 🎉🎉')
 
@@ -102,22 +101,23 @@ export class AuthService {
 		})
 		return {
 			status: 409,
-			message: 'This user cannot be created.',
+			message: 'This user cannot be created. Its already in use!',
 			error: true
 		}
 	}
 
-	async recoveryPassword(email: string): Promise<IResponse> {
+	async recoveryPassword(email: string): Promise<IResponse<string>> {
 		const alreadyHaveActiveCode = await this.repository.alreadyGenerated(email)
 
 		if (!alreadyHaveActiveCode) {
-			await this.repository.createRecoveryCode(email)
+			const code = await this.repository.createRecoveryCode(email)
 
 			this.logger.warn('User created a recovery password code', { user: email })
 			return {
 				error: false,
 				message: 'Recovery code created successfully.',
-				status: 201
+				status: 201,
+				data: code as string
 			}
 		}
 

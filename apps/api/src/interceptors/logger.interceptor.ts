@@ -11,6 +11,10 @@ export class MyLogger extends Logger {
 
 	constructor() {
 		super()
+		this.config()
+	}
+
+	config() {
 		const options = {
 			key: LOG_DNA.key,
 			hostname: LOG_DNA.hostname,

@@ -40,20 +40,8 @@ export class UserService {
 	}
 
 	async create(data: IUser): Promise<IResponse<UserDocument>> {
-		const alreadyInUse = await this.userRepository.checkEmailAlreadyInUse(
-			data.email
-		)
-
-		if (alreadyInUse) {
-			this.logger.warn('This email is already in use', { email: data.email })
-			return {
-				status: 408,
-				message: 'This email is already in use',
-				error: true
-			}
-		}
-
-		data.password = await bcrypt.hashSync(data.password, 10)
+		const saltOrRounds = 10
+		data.password = bcrypt.hashSync(data.password, saltOrRounds)
 		const user = await this.userRepository.createUser(data)
 
 		this.logger.log('New user created', { user: data.email })
