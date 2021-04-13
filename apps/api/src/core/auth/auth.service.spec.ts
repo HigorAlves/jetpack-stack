@@ -2,7 +2,6 @@ import { JwtModule } from '@nestjs/jwt'
 import { MongooseModule } from '@nestjs/mongoose'
 import { PassportModule } from '@nestjs/passport'
 import { Test, TestingModule } from '@nestjs/testing'
-import * as bcrypt from 'bcrypt'
 
 import { AuthService } from './auth.service'
 import { JWT } from '~/constants'

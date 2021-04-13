@@ -14,7 +14,7 @@
 		"noEmit": true,
 		"jsx": "react-jsx",
 		"baseUrl": "src",
-		"noFallthroughCasesInSwitch": true
+		"noFallthroughCasesInSwitch": true,
 	},
 	"include": ["src", "typings"]
 }
