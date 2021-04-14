@@ -13,6 +13,7 @@ import { LoggerModule } from '~/interceptors/logger.interceptor'
 import { ILogin } from '~/interfaces/authentication'
 import { IUser } from '~/interfaces/user'
 import { RecoverySchema } from '~/schemas/recovery.schema'
+import { UserSchema } from '~/schemas/user.schema'
 import {
 	closeInMongodbConnection,
 	rootMongooseTestModule
@@ -40,8 +41,8 @@ describe('AuthService', () => {
 	beforeAll(async () => {
 		const module: TestingModule = await Test.createTestingModule({
 			imports: [
-				rootMongooseTestModule(),
 				UserModule,
+				rootMongooseTestModule(),
 				PassportModule,
 				MongooseModule.forFeature([
 					{ name: 'Recovery', schema: RecoverySchema }
@@ -62,7 +63,7 @@ describe('AuthService', () => {
 		expect(service).toBeDefined()
 	})
 
-	it('should register a new user', async () => {
+	it('should register a user', async () => {
 		const { status } = await service.register(userData)
 		expect(status).toBe(201)
 	})

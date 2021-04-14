@@ -10,6 +10,7 @@
 	"transform": {
 		"^.+\\.(t|j)s$": "ts-jest"
 	},
+	"testTimeout": 5000,
 	"collectCoverageFrom": [
 		"**/*.(t|j)s"
 	],
@@ -19,5 +20,5 @@
 		"~/(.*)": [
 			"<rootDir>/src/$1"
 		]
-  }
+	}
 }
