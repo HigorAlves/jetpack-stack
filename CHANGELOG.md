@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/HigorAlves/jetpack-stack/compare/v0.2.1...v0.3.0) (2021-04-14)
+
+
+### :memo: Docs
+
+* rename template file ([5bb5b20](https://github.com/HigorAlves/jetpack-stack/commit/5bb5b20c823b9393a4435b2ed9d88b917cc27096))
+
+
+### :triangular_flag_on_post: Others
+
+* **api:** updated dependencies versions ([fdbf1bc](https://github.com/HigorAlves/jetpack-stack/commit/fdbf1bc07028d224668ebb5e39c4da2c2788b238))
+* **api:** updated dependencies versions ([566e6a2](https://github.com/HigorAlves/jetpack-stack/commit/566e6a2fe7ac0d1adf6fbf6ddd1aa4eb2e0f7b8c))
+* new dependencies updated ([16a846e](https://github.com/HigorAlves/jetpack-stack/commit/16a846e3f730b178fa907c5b1c65fc5df052d602))
+
+
+### :white_check_mark: Tests
+
+* **api:** create auth service tests ([0ab0398](https://github.com/HigorAlves/jetpack-stack/commit/0ab03988b58b6e210504cb19e258476b32c52498))
+* **client:** basic e2e ([fe9c120](https://github.com/HigorAlves/jetpack-stack/commit/fe9c120e03d920780cc0761049e3be6453ab1c0c))
+
+
+### :bug: Bug Fixes
+
+* **api:** tests ([46b7eb3](https://github.com/HigorAlves/jetpack-stack/commit/46b7eb31a6c18c38404bec21bd733f418db644dd))
+* doc & tests ([69348b5](https://github.com/HigorAlves/jetpack-stack/commit/69348b56c8ba213d58bc4c3a3aa299dde3c1b996))
+
+
+### CI
+
+* github actions configured ([0ed2abb](https://github.com/HigorAlves/jetpack-stack/commit/0ed2abb4b9c76f79b517271b69c8ce32cb5b44ce))
+* paths to ignore ([a19a754](https://github.com/HigorAlves/jetpack-stack/commit/a19a7547ea1a49660664a99a9dab205309b27c94))
+
 ### [0.2.1](https://github.com/HigorAlves/jetpack-stack/compare/v0.1.0...v0.2.1) (2021-03-20)
 
 
