@@ -5,10 +5,9 @@ const ptBR: AppLocale = {
 	},
 	home: {
 		metatags: {
-			title: 'Nata.House CRA Template',
+			title: 'CRA Template',
 			url: 'https://example.com.br',
-			description:
-				'A nata.house maximiza resultados para clientes ao focar em um conjunto de tecnologias sólidas usadas por grandes empresas.'
+			description: 'Apenas um template de CRA.'
 		},
 		content: 'Edite o arquivo src/Home.tsx e salve para atualizar',
 		learn: 'Aprenda React'

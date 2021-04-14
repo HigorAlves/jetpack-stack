@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 
 import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
@@ -21,7 +21,7 @@ export function HomePage(): JSX.Element {
 	return (
 		<>
 			<Helmet>
-				<title>{t('title')}</title>
+				<title>CRA TEMPLATE</title>
 				<meta name='description' content={t('metatags.description')} />
 				<meta name='url' content={t('metatags.url')} />
 				<meta property='og:title' content={t('metatags.title')} />
@@ -31,9 +31,9 @@ export function HomePage(): JSX.Element {
 
 			<div>
 				<header>
-					<span onClick={toggleLanguage}>{languages(language)}</span>
+					<button onClick={toggleLanguage}>{languages(language)}</button>
 
-					<img src={logo} alt='logo' />
+					<img src={logo} alt='logo' height={'400px'} />
 					<p>{t('content')}</p>
 					<a
 						href='https://reactjs.org'
