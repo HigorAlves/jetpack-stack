@@ -20,7 +20,7 @@ const CONSTANTS = (): CONFIG_VARS => ({
 		apiKey: process.env.STRIPE_API_KEY
 	},
 	coinbase: {
-		apiKey:process.env.COINBASE_API_KEY
+		apiKey: process.env.COINBASE_API_KEY
 	},
 	logDna: {
 		key: process.env.LOGDNA_KEY,
