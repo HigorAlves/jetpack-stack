@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Teste from '@jetpack/ui'
 import { useHistory } from 'react-router-dom'
 
 export function Login() {
@@ -9,7 +8,6 @@ export function Login() {
 	function handleSubmit(event: React.ChangeEvent<HTMLFormElement>) {
 		event.preventDefault()
 		history.push('/dashboard')
-		Teste()
 	}
 
 	return (
