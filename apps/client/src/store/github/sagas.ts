@@ -1,5 +1,4 @@
 import { call, put } from 'redux-saga/effects'
-
 import { successLoad } from 'store/github/actions'
 
 import { ISuccessGetRepos } from './types'

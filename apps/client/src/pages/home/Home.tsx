@@ -1,9 +1,8 @@
 import React, { useCallback, useState } from 'react'
 
+import logo from 'assets/svg/logo.svg'
 import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
-
-import logo from 'assets/svg/logo.svg'
 
 export function HomePage(): JSX.Element {
 	const { t: languages } = useTranslation('languages', { useSuspense: false })

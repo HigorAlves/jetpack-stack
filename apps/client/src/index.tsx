@@ -4,7 +4,6 @@ import * as Sentry from '@sentry/react'
 import { Integrations } from '@sentry/tracing'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-
 import Router from 'router'
 import { store } from 'store'
 
