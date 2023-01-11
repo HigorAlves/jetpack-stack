@@ -41,7 +41,7 @@
 		"@sentry/node": "^6.2.5",
 		"@types/mongodb": "^3.6.12",
 		"bcrypt": "^5.0.1",
-		"class-validator": "^0.13.1",
+		"class-validator": "^0.14.0",
 		"coinbase-commerce-node": "^1.0.4",
 		"csurf": "^1.11.0",
 		"express-rate-limit": "^5.2.6",
